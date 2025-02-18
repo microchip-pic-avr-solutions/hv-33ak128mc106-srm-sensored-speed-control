@@ -4,7 +4,7 @@
     <img alt="Microchip Logo." src="images/microchip_logo_black_red.png">
 </picture> 
 
-## %repoDescritpion%
+## hv 33ak128mc106 srm sensored speed control
 
 Board Image if any.
 
