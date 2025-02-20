@@ -39,9 +39,10 @@
          "PWM",
          "SPI",
          "SRM",
-	 "Motor Control",
+		 "Motor Control",
          "Speed Control",
-	 "Magnetic Position Sensor",
+		 "Sensored Control",
+		 "Magnetic Position Sensor",
          "dsPIC"
       ]
    }
