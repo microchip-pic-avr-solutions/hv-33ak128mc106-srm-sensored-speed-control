@@ -4,21 +4,21 @@
    "content":{
       "metaDataVersion":"1.3.0",
       "name":"com.microchip.mplabx.project.hv-33ak128mc106-srm-sensored-speed-control",
-      "version":"x.x.x",
-      "displayName":"xxxxxxxxxxxxxxx",
+      "version":"1.0.0",
+      "displayName":"Sensor-based speed control of SRM using dsPIC33AK128MC106",
       "projectName":"hv-33ak128mc106-srm-sensored-speed-control",
-      "shortDescription":"xxxxxxxxxxxxxxx",
+      "shortDescription":"Sensor-based speed control of Switched Reluctance Motor (SRM) using dsPIC33AK128MC106",
       "ide":{
          "name":"MPLABX",
-         "semverRange":">=5.40.0"
+         "semverRange":">=6.20"
       },
       "compiler":{
-         "name":"XC16",
-         "semverRange":"^1.50.0"
+         "name":"XC-DSC",
+         "semverRange":">=3.20"
       },
       "dfp":{
-         "name":"xxxxxxxxxxxxxxx",
-         "semverRange":">=x.x.x"
+         "name":"dsPIC33AK-MC_DFP",
+         "semverRange":"=1.0.33"
       },
 	  "configurator": {
          "name": "MCC",
@@ -30,13 +30,20 @@
          "content":{
             "metaDataVersion":"1.0.0",
             "category":"com.microchip.device",
-            "name":"xxxxxxxxxxxxxxx",
+            "name":"dsPIC33AK128MC106",
             "versionRange":"*"
          }
       },
       "keywords":[
-         "GPIO",
-         "UART"
+         "ADC",
+         "PWM",
+         "SPI",
+         "SRM",
+		 "Motor Control",
+         "Speed Control",
+		 "Sensored Control",
+		 "Magnetic Position Sensor",
+         "dsPIC"
       ]
    }
 }
