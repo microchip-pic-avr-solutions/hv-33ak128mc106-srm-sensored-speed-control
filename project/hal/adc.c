@@ -101,14 +101,14 @@ void InitializeADCs(void)
     /* Channel Configuration for VBUS*/
     /*ADC1 Channel 2 for VBUS : AD1AN6/RP8/IOMF1/RA7 */ 
     AD1CH2CONbits.PINSEL = 6;        
-    AD1CH2CONbits.SAMC = 1;         
+    AD1CH2CONbits.SAMC = 5;         
     AD1CH2CONbits.LEFT = 0;
     AD1CH2CONbits.DIFF = 0;
     
     /* Channel Configuration for IBUS*/
     /*ADC2 Channel 2 for IBUS : AD2ANN2/AD2AN8/RP24/IOMF0/RB7 */ 
     AD2CH2CONbits.PINSEL = 8;      
-    AD2CH2CONbits.SAMC = 1;      
+    AD2CH2CONbits.SAMC = 3;      
     AD2CH2CONbits.LEFT = 0;
     AD2CH2CONbits.DIFF = 0;
 
@@ -143,7 +143,7 @@ void InitializeADCs(void)
     /* Channel Configuration for POT*/
     /*ADC1 Channel 5 for POT : AD1AN10/RP12/RA11 */     
     AD1CH5CONbits.PINSEL = 10;      
-    AD1CH5CONbits.SAMC = 2;         
+    AD1CH5CONbits.SAMC = 5;         
     AD1CH5CONbits.LEFT = 0;
     AD1CH5CONbits.DIFF = 0;
 
@@ -182,13 +182,13 @@ void InitializeADCs(void)
     /*PWM1 ADC Trigger 1 for IBUS - AD2CH2*/
     AD2CH2CONbits.TRG1SRC = 4;
     /*PWM1 ADC Trigger 1 for VA - AD2CH3*/
-    AD2CH3CONbits.TRG1SRC = 4;
+    AD2CH3CONbits.TRG1SRC = 0;
     /*PWM1 ADC Trigger 1 for VB - AD1CH3*/
-    AD1CH3CONbits.TRG1SRC = 4;
+    AD1CH3CONbits.TRG1SRC = 0;
     /*PWM1 ADC Trigger 1 for VC - AD2CH4*/
-    AD2CH4CONbits.TRG1SRC = 4;
+    AD2CH4CONbits.TRG1SRC = 0;
     /*PWM1 ADC Trigger 1 for VD - AD1CH4*/
-    AD1CH4CONbits.TRG1SRC = 4;
+    AD1CH4CONbits.TRG1SRC = 0;
     
     /*PWM1 ADC Trigger 1 for POT - AD1CH5*/
     AD1CH5CONbits.TRG1SRC = 4;      

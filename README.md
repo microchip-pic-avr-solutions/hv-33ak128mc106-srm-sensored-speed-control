@@ -1,5 +1,8 @@
-![image](images/microchip.jpg) 
-## Speed control of Switched Reluctance Motor (SRM) using dsPIC33AK128MC106 
+<picture>
+    <source media="(prefers-color-scheme: dark)" srcset="images/microchip_logo_white_red.png">
+    <source media="(prefers-color-scheme: light)" srcset="images/microchip_logo_black_red.png">
+    <img alt="Microchip Logo." src="images/microchip_logo_black_red.png">
+</picture>
 
 
 ## 1. INTRODUCTION
@@ -19,10 +22,10 @@ To clone or download this application firmware on GitHub,
 >In this document, hereinafter this firmware package is referred as **firmware.**
 ### 2.2 Software Tools Used for Testing the firmware
 
-- MPLAB® X IDE **v6.20** 
-- Device Family Pack (DFP): **dsPIC33AK-MC_DFP v1.0.33**
-- Curiosity/Starter Kits Tool Pack : **PKOB4_TP v1.18.1438**
-- MPLAB® XC-DSC Compiler **v3.20**
+- MPLAB® X IDE **v6.25** 
+- Device Family Pack (DFP): **dsPIC33AK-MC_DFP v1.1.109**
+- Curiosity/Starter Kits Tool Pack : **PKOB4_TP v1.19.1503**
+- MPLAB® XC-DSC Compiler **v3.21**
 - MPLAB® X IDE Plugin: **X2C-Scope v1.7.0** 
 > **Note:** </br>
 >The software used for testing the firmware prior to release is listed above. It is recommended to use these or later versions of the tool for building the firmware. All previous versions of Device Family Packs (DFP) and Tool Packs can be downloaded from [Microchip Packs Repository.](https://packs.download.microchip.com/)
@@ -45,25 +48,47 @@ This section describes the hardware setup required for the demonstration.
      <p align="left" >
      <img  src="images/Tableopamp.png" width="600"></p>
 
-2. Ensure the development board is not powered and it is fully discharged. Verify the LEDs **LD1** (Green) on Power Supply Board, **LD1** (Green) on Inverter Board and **LD4** (Green) on Control Board are not glowing.
+2. Ensure the development board is not powered and it is fully discharged. Verify the LEDs **LD1** (Green) on Power Supply Board, **LD1** (Green) on four phase asymmetric converter Board and **LD4** (Green) on Control Board are not glowing.
 
      <p align="left" >
      <img  src="images/MCHVnotpowered.jpg" width="600"></p>
 
-3.  Insert the **dsPIC33AK128MC106 Motor Control DIM** into the DIM Interface **connector J2** on the control board. Make sure the DIM is placed correctly and oriented before going ahead. 
+3.  Please make the necessary connections as described and illustrated in the figure below:
+     - Connect the AC supply (75 to 285 Vac) to the **J1** connector on the power supply board.
+     - Connect the DC bus positive terminal from **J3** on the power supply board to **J9** on the four-phase asymmetric converter board.
+     - Connect the DC bus negative terminal from **J4** on the power supply board to **J10** on the four-phase asymmetric converter board.
+     - Connect the 15 V auxiliary supply from **J6** on the power supply board to **J5** on the four-phase asymmetric converter board.
+     - Connect the 15 V auxiliary supply from **J7** on the power supply board to **J4** on the control board.
+     - Connect the control signals between **J6** on the control board and **J6** on the four-phase asymmetric converter board.
+     - Connect the motor phase connections to **J1**, **J2**, **J3**, and **J4** on the four-phase asymmetric converter board.
+
+     <p align="left" >
+     <img  src="images/hardwareconnections.png" width="600"></p>
+
+4.  Insert the **dsPIC33AK128MC106 Motor Control DIM** into the DIM Interface **connector J2** on the control board. Make sure the DIM is placed correctly and oriented before going ahead. 
 
      <p align="left" >
      <img  src="images/dimconnected.PNG" width="600"></p>
 
 
-4. Connect the 4-phase wires from the motor to **A**, **B**, **C**, and **D** of the connector J1, J2, J3 and J4 respectively (**MOTOR**) on the inverter board.
+5. Connect the 4-phase wires from the motor to **A**, **B**, **C**, and **D** of the connector J1, J2, J3 and J4 respectively (**MOTOR**) on the four phase asymmetric converter board.
 
      <p align="left" >
       <img  src="images/motorconnection.JPG" width="600"/></p>
 
-5. Connect the rotor position sensor interface to the control board (for this application AM4096 magnetic encoder is used to detect the rotor position).
+6. Connect the rotor position sensor interface to the **J5** or **J10** connector control board. 
 
-6. Power the development board from a controlled AC source by applying voltage of 220 V<sub>ac rms</sub> through IEC connector **connector J1** provided on the Power board.
+     <p align="left" >
+      <img  src="images/sensorinterface.png" width="600"/></p>
+
+     > **Note:** </br>
+     > In  this application AM4096 magnetic encoder is used to detect the rotor position. The AM4096 magnetic sensor board is connected to the **J5** connector connector on the control board.. The rotor position is determined using the Synchronous Serial Interface (SSI) between the controller and the sensor.
+     <p align="left" >
+      <img  src="images/am4096magneticsensorboard.png" width="400"/></p>
+
+
+
+7. Power the development board from a controlled AC source by applying voltage of 220 V<sub>ac rms</sub> through IEC connector **connector J1** provided on the Power board.
 
      <p align="left" >
       <img  src="images/mchvPower.JPG" width="600"/></p>
@@ -71,14 +96,14 @@ This section describes the hardware setup required for the demonstration.
      > **Note:** </br>
      >This Board is designed to operate in the 75 to 280 V<sub>ac rms</sub> voltage range with a maximum input current of 10A<sub>rms</sub>. 
 
- 7. The development board has an isolated on-board programming tool called the Isolated PKoB4 Daughter Board. To use the isolated on-board programmer, connect a micro-USB cable between the Host PC and the connector J14 (**PROGRAM**) on the control board.
+ 8. The development board has an isolated on-board programming tool called the Isolated PKoB4 Daughter Board. To use the isolated on-board programmer, connect a micro-USB cable between the Host PC and the connector J14 (**PROGRAM**) on the control board.
       <p align="left">
      <img  src="images/mchvProgrammer.JPG" width="600"></p>
 
      > **Note:** </br>
      > Use only **shielded micro-USB** cables intended for data transfer.
 
- 8. To establish serial communication with the host PC, connect a micro-USB cable between the host PC and the connector J11 (**USB-UART**) on the development board. This interface provides an isolated USB-UART communication.
+ 9. To establish serial communication with the host PC, connect a micro-USB cable between the host PC and the connector J11 (**USB-UART**) on the development board. This interface provides an isolated USB-UART communication.
       <p align="left">
       <img  src="images/usbUart.JPG" width="600"/></p>
 
@@ -104,7 +129,7 @@ X2C-Scope is a MPLAB X IDE plugin that allows developers to interact with an app
 ### 5.1 Firmware Description
 The firmware version needed for the demonstration is mentioned in the section [Motor Control Application Firmware Required for the Demonstration](#21-motor-control-application-firmware-required-for-the-demonstration) section. This firmware is implemented to work on Microchip’s Digital signal controller (dsPIC® DSC) **dsPIC33AK128MC106**. For more information, see the **dsPIC33AK128MC106 Family datasheet [(DS70005539)](https://ww1.microchip.com/downloads/aemDocuments/documents/MCU16/ProductDocuments/DataSheets/dsPIC33AK128MC106-Family-Data-Sheet-DS70005539.pdf)**.
 
-The Motor Control Demo application uses a push button to start or stop the motor and a potentiometer to vary the speed of the motor. This Motor Control Demo Application configures and uses peripherals like PWM, ADC, UART, etc. 
+The Motor Control Demo application uses a push button to start or stop the motor and a potentiometer to vary the speed of the motor. This Motor Control Demo Application configures and uses peripherals like PWM, ADC, UART, SPI etc. 
 
 > **Note:**</br>
 > The project may not build correctly in Windows OS if the Maximum path length of any source file in the project is more than 260 characters. In case the absolute path exceeds or nears the maximum length, do any (or both) of the following:
@@ -140,9 +165,9 @@ Follow the below instructions, step by step, to set up and run the motor control
      In the **Conf:[default]** category window: 
      - Ensure the selected **Device** is **dsPIC33AK128MC106.**
      - Select the **Connected Hardware Tool** to be used for programming and debugging. 
-     - Select the specific Device Family Pack (DFP) from the available list of **Packs.** In this case, **dsPIC33AK-MC_DFP 1.0.33** is selected. 
+     - Select the specific Device Family Pack (DFP) from the available list of **Packs.** In this case, **dsPIC33AK-MC_DFP 1.1.109** is selected. 
      - Select the specific **Compiler Toolchain** from the available list of **XC-DSC** compilers. 
-     In this case, **XC-DSC(v3.20)** is selected.
+     In this case, **XC-DSC(v3.21)** is selected.
      - After selecting Hardware Tool and Compiler Toolchain, Device Pack, click the button **Apply**
 
      Please ensure that the selected MPLAB® XC-DSC Compiler and Device Pack support the device configured in the firmware
@@ -168,7 +193,7 @@ Follow the below instructions, step by step, to set up and run the motor control
     <p align="left">
     <img  src="images/deviceprogramming.png" width="600"></p>
   
-7. If the device is successfully programmed, **LED1 (D11)** will be turned **ON**, indicating that the dsPIC® DSC is enabled.
+7. If the device is successfully programmed, **LED1 (D11)** will be **blinking**, indicating that the dsPIC® DSC is enabled.
     <p align="left">
      <img  src="images/led.png" width="300"></p>
 
@@ -258,7 +283,6 @@ For additional information, refer following documents or links.
 5. [MPLAB® XC-DSC Compiler installation](https://developerhelp.microchip.com/xwiki/bin/view/software-tools/xc-dsc/install/)
 6. [Installation and setup of X2Cscope plugin for MPLAB X](https://x2cscope.github.io/docs/MPLABX_Plugin.html)
 7. [Microchip Packs Repository](https://packs.download.microchip.com/)
-8. [Programming and Debugging the dsPIC33A on MPLAB X IDE v6.20 and IPE v6.20](https://developerhelp.microchip.com/xwiki/bin/view/software-tools/ides/x/)
 
 
 
