@@ -178,12 +178,12 @@ void InitOscillator (void)
     
     /** Clock used for ADC  
     * Input Clock Selection (NOSC) = 5 :PLL1 FOUT output = 200 MHz
-    * Clock Division (INTDIV) = (4*2)
-    * Final Clock for ADC = 25 MHz */
-    CLK6DIVbits.INTDIV = 4;
+    * Clock Division (INTDIV) = (1*2)
+    * Final Clock for ADC = 100 MHz */
+    CLK6DIVbits.INTDIV = 1;
     CLK6CONbits.OE = 1;
     CLK6CONbits.ON = 1;
-    CLK6CONbits.NOSC = 5; 
+    CLK6CONbits.NOSC = 5;
     CLK6CONbits.OSWEN = 1; 
     while (CLK6CONbits.OSWEN);
     CLK6CONbits.DIVSWEN =1;

@@ -233,7 +233,7 @@ void MapGPIOHWFunction(void)
 */
 void OpampConfig (void)
 {
-    /** AMPxCON1 :AMPx Control Register 1*/
+    /** AMP1CON1 :AMP1 Control Register 1*/
     AMP1CON1 = 0x0000;
     /** Bit 15 = AMPEN Op Amp Enable/On bit 
         1 Enables op amp module ; 
@@ -242,7 +242,7 @@ void OpampConfig (void)
     /** Bit 14 = HPEN High-Power Enable bit  
         1 Enables Op Amp High-Power (high bandwidth) mode ; 
         0 Disables Op Amp High-Power mode */    
-    AMP1CON1bits.HPEN = 0;
+    AMP1CON1bits.HPEN = 1;
     /** Bit 13 = UGE Unity Gain Buffer Enable bit 
         1 Enables Unity Gain mode ; 
         0 Disables Unity Gain mode */
@@ -253,16 +253,12 @@ void OpampConfig (void)
         01 Turn PMOS differential input pair off 
         00 Use both NMOS and PMOS differential input pair */
     AMP1CON1bits.DIFFCON = 0;
-    /** Bit 9 = IMONEN Enable Input Monitor bit
-        1 Enables positive input to ADC ; 
-        0 Disables positive input to ADC */    
-    AMP1CON1bits.IMONEN = 0;
     /** Bit 8 = OMONEN Enable Output Monitor bit
         1 Enables output to ADC; 
         0 Disables output to ADC */     
     AMP1CON1bits.OMONEN = 1;
     
-    /** AMPxCON1 :AMPx Control Register 1*/
+    /** AMP2CON1 :AMP2 Control Register 1*/
     AMP2CON1 = 0x0000;
     /** Bit 15 = AMPEN Op Amp Enable/On bit 
         1 Enables op amp module ; 
@@ -271,7 +267,7 @@ void OpampConfig (void)
     /** Bit 14 = HPEN High-Power Enable bit  
         1 Enables Op Amp High-Power (high bandwidth) mode ; 
         0 Disables Op Amp High-Power mode */    
-    AMP2CON1bits.HPEN = 0;
+    AMP2CON1bits.HPEN = 1;
     /** Bit 13 = UGE Unity Gain Buffer Enable bit 
         1 Enables Unity Gain mode ; 
         0 Disables Unity Gain mode */
@@ -282,45 +278,12 @@ void OpampConfig (void)
         01 Turn PMOS differential input pair off 
         00 Use both NMOS and PMOS differential input pair */
     AMP2CON1bits.DIFFCON = 0;
-    /** Bit 9 = IMONEN Enable Input Monitor bit
-        1 Enables positive input to ADC ; 
-        0 Disables positive input to ADC */    
-    AMP2CON1bits.IMONEN = 0;
     /** Bit 8 = OMONEN Enable Output Monitor bit
         1 Enables output to ADC; 
         0 Disables output to ADC */     
     AMP2CON1bits.OMONEN = 1;
     
-    /** AMPxCON1 :AMPx Control Register 1*/
-    AMP2CON1 = 0x0000;
-    /** Bit 15 = AMPEN Op Amp Enable/On bit 
-        1 Enables op amp module ; 
-        0 Disables op amp module */
-    AMP2CON1bits.AMPEN = 0;
-    /** Bit 14 = HPEN High-Power Enable bit  
-        1 Enables Op Amp High-Power (high bandwidth) mode ; 
-        0 Disables Op Amp High-Power mode */    
-    AMP2CON1bits.HPEN = 0;
-    /** Bit 13 = UGE Unity Gain Buffer Enable bit 
-        1 Enables Unity Gain mode ; 
-        0 Disables Unity Gain mode */
-    AMP2CON1bits.UGE = 0;
-    /** Bits 12:11 = DIFFCON[1:0] Differential Input Mode Control bits
-        11 Reserved, do not use; 
-        10 Turn NMOS differential input pair off
-        01 Turn PMOS differential input pair off 
-        00 Use both NMOS and PMOS differential input pair */
-    AMP2CON1bits.DIFFCON = 0;
-    /** Bit 9 = IMONEN Enable Input Monitor bit
-        1 Enables positive input to ADC ; 
-        0 Disables positive input to ADC */    
-    AMP2CON1bits.IMONEN = 0;
-    /** Bit 8 = OMONEN Enable Output Monitor bit
-        1 Enables output to ADC; 
-        0 Disables output to ADC */     
-    AMP2CON1bits.OMONEN = 1;
-    
-    /** AMPxCON1 :AMPx Control Register 1*/
+    /** AMP3CON1 :AMP3 Control Register 1*/
     AMP3CON1 = 0x0000;
     /** Bit 15 = AMPEN Op Amp Enable/On bit 
         1 Enables op amp module ; 
@@ -329,7 +292,7 @@ void OpampConfig (void)
     /** Bit 14 = HPEN High-Power Enable bit  
         1 Enables Op Amp High-Power (high bandwidth) mode ; 
         0 Disables Op Amp High-Power mode */    
-    AMP3CON1bits.HPEN = 0;
+    AMP3CON1bits.HPEN = 1;
     /** Bit 13 = UGE Unity Gain Buffer Enable bit 
         1 Enables Unity Gain mode ; 
         0 Disables Unity Gain mode */
@@ -340,15 +303,12 @@ void OpampConfig (void)
         01 Turn PMOS differential input pair off 
         00 Use both NMOS and PMOS differential input pair */
     AMP3CON1bits.DIFFCON = 0;
-    /** Bit 9 = IMONEN Enable Input Monitor bit
-        1 Enables positive input to ADC ; 
-        0 Disables positive input to ADC */    
-    AMP3CON1bits.IMONEN = 0;
     /** Bit 8 = OMONEN Enable Output Monitor bit
         1 Enables output to ADC; 
         0 Disables output to ADC */     
     AMP3CON1bits.OMONEN = 1;
     
+    /* Enabling the amplifiers */
     /** Bit 15 = AMPEN Op Amp Enable/On bit 
         1 Enables op amp module ; 
         0 Disables op amp module */
